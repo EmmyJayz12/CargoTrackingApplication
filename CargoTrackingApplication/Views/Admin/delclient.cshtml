@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "delclient";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@Html.Partial("_AdminHeader")
+
+<!--main content begins -->
+<div class="ed_transprentbg ed_toppadder90 ed_bottompadder90" style="back">
+    <div class="container content">
+        <div class="row">
+            <!-- left side bar for quick links -->
+            <div class="col-lg-3 col-md-3 col-sm-3 adminsidebar">
+                <h3 style="font-weight: bolder;COLOR:#FFF;">QUICK LINKS</h3>
+
+                @Html.Partial("_HeaderLink")
+
+            </div>
+            <!-- left side bar for quick links ends -->
+            <!-- right side bar for tracking details and feedback -->
+            <div class="col-lg-9 col-md-9 col-sm-9 admincreateidbar">
+                <hgroup>
+                    <h4 style="font-weight: bolder;">
+                        <i class="fa fa-eraser"></i> You are about to delete the selected item. <h4>
+                            <p>All tracking info associated with this shipper would be deleted as well. Do you wish to continue? </p>
+                </hgroup>
+                <div class="error_detect"> </div>
+                <form class="panel panel-group createtrackid" action="" method="post">
+                    <!--<div class="row">
+                   <div class="col-md-6">
+                              <button class="btn btn-primary" name="yes" type="submit"><i class="fa fa-paper-plane"></i>Yes</button>
+                          </div>
+            <div class="col-md-6">
+                              <button class="btn btn-warning" name="no" type="submit"><i class="fa fa-paper-plane"></i>No</button>
+                          </div>
+               </div>-->
+                    <ul class="pager">
+                        </li>
+                        <button class="btn btn-primary" name="yes" type="submit"><i class="fa fa-paper-plane"></i>Yes</button></li>
+
+                        <li><button class="btn btn-danger" name="no" type="submit"><i class="fa fa-paper-plane"></i>No</button></li>
+
+                    </ul>
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!-- right sidebar tracking details and feedback ends-->
+</div>
+

@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Views/Shared/_LoginView.cshtml";
+}
+
+<!--main content begins -->
+<div class="ed_transprentbg ed_toppadder90 ed_bottompadder90">
+    <div class="container-fluid content">
+        <div class="row">
+            <!-- brief heading -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="ed_heading_top ed_bottompadder50" style="padding-bottom:0px;">
+                    <h3>Tracking Info</h3>
+                </div>
+            </div>
+            <!-- brief heading ends -->
+
+            @Html.Partial("LoginPartial")
+
+            <!-- right side bar for tracking details and feedback -->
+            <div class="col-lg-9 col-md-9 col-sm-9 admincreateidbar">
+                <hgroup>
+                    <h4>You can kindly send us a feedback which could be a report or suggestion.</h4>
+                </hgroup>
+                <div id="error_detect"> </div>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Subject" name="subject" required />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button class="btn btn-primary" name="sendmsg" type="submit">Send</button>
+
+
+                </form>
+            </div>  
+
+            <!-- right sidebar tracking details and feedback ends-->
+        </div>
+    </div>
+</div>
+
+
+
