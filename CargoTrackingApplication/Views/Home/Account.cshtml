@@ -1,7 +1,15 @@
-﻿
+﻿@using CargoTrackingApplication.Models
 @{
     ViewBag.Title = "Account";
     Layout = "~/Views/Shared/_LoginView.cshtml";
+}
+
+@{ 
+    var record = Session["User"] as ClientRegistration;
+}
+
+@{ 
+    var record2 = Session["User2"] as TrackInfoUpdate;
 }
 
  <!--main content begins -->
@@ -15,54 +23,63 @@
                 </div>
             </div>
             <!-- brief heading ends -->
+            
            
             @Html.Partial("LoginPartial")
 
             <!-- right side bar for tracking details and feedback -->
             <div class="col-lg-9 col-md-9 col-sm-9 admincreateidbar">
                 <div class="table-responsive">
+                    <table class="table table-striped delivery-status">
+                        <tr>
+                            <th style="color:#fca901;">DATE & TIME</th>
+                            <th style="color:#fca901;">STATUS OF ITEM</th>
+                            <th style="color:#fca901;">LOCATION</th>
+                        </tr>
+                        <tr>
+                            @if(record2 != null) {
+                            <td style="color:lightgreen"><b>@record2.CreatedOn</b></td>
+                            <td style="color:lightgreen"><b>@record2.Status</b></td>
+                            <td style="color:lightgreen"><b>@record2.Location</b></td>
+                            }
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="table-responsive">
+@if (record != null)
+{
                     <table class="table table-bordered" style="background-color:#fff;">
+                       
                         <tr>
                         <tr>
                             <td>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <span>Shipper Name:</span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span></span>
-                                    </div>
+                                    <div class="col-md-12">
+                                        <span>Shipper Name: <b>@record.ShippersFirstName @record.ShippersLastName</b></span>
+                                    </div>                    
                                 </div>
                             <td>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <span>Receiver Name: </span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span></span>
-                                    </div>
+                                    <div class="col-md-12">
+                                        <span>Receiver Name: <b>@record.ReceiversFirstName @record.ReceiversLastName</b></span>
+                                    </div>                                   
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <span>Shipper Phone: </span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span></span>
-                                    </div>
+                                    <div class="col-md-12">
+                                        <span>Shipper Phone:<b>@record.ShippersPhone</b></span>
+                                    </div>                                    
                                 </div>
                             </td>
                             <td>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <span>Receiver Phone: </span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <span></span>
-                                    </div>
+                                    <div class="col-md-12">
+                                        <span>Receiver Phone:<b>@record.ReceiversPhone</b></span>
+                                    </div>                                    
                                 </div>
                             </td>
                         </tr>
@@ -73,7 +90,7 @@
                                         <span>Shipper Country:</span>
                                     </div>
                                     <div class="col-md-6">
-                                        <span></span>
+                                        <span><b>@record.ShippersCountryName</b></span>
                                     </div>
                                 </div>
                             </td>
@@ -83,86 +100,61 @@
                                         <span>Destination Country: </span>
                                     </div>
                                     <div class="col-md-6">
-                                        <span></span>
+                                        <span><b>@record.ShippersCountryName</b></span>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-right">Receiver Address: </td>
-                            <td></td>
+                            <td class="text-right">Receiver Address:</td>
+                            <td><b>@record.ReceiversAddress</b></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Tracking No: </td>
-                            <td style="color:#ff1a1a;"></td>
+                            <td class="text-right">Tracking No:</td>
+                            <td style="color:#ff1a1a;">@record.TrackingId</td>
                         </tr>
                         <tr>
-                            <td class="text-right">Description: </td>
-                            <td></td>
+                            <td class="text-right">Description:</td>
+                            <td><b>@record.Description</b></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Weight: </td>
-                            <td></td>
+                            <td class="text-right">Weight:</td>
+                            <td><b>@record.weight</b></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Invoice No: </td>
-                            <td></td>
+                            <td class="text-right">Invoice No:</td>
+                            <td><b>@record.Invoice</b></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Booking Mode: </td>
-                            <td></td>
+                            <td class="text-right">Booking Mode:</td>
+                            <td><b>@record.BookingMode</b></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Total Freight: </td>
-                            <td></td>
+                            <td class="text-right">Total Freight:</td>
+                            <td><b>@record.TotalFreight</b></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Mode: </td>
-                            <td></td>
+                            <td class="text-right">Mode:</td>
+                            <td><b>@record.BookingMode</b></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Pickup Date/Time: </td>
-                            <td></td>
+                            <td class="text-right">Registration  Date/Time:</td>
+                            <td><b>@record.PickupDate @record.PickTime</b></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Status: </td>
-                            <td></td>
+                            <td class="text-right">Status:</td>
+                            <td><b>@record.Status</b></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Comments: </td>
-                            <td></td>
+                            <td class="text-right">Comments:</td>
+                            <td><b>@record.Comment</b></td>
                         </tr>
+                        
                     </table>
+}
                 </div>
-                <!--<hgroup>
-                   <h4><span style="color:#00aced;font-weight:bolder;">Tracking Number: </span></h4>
-                </hgroup>
-
-                            <table class="table table-striped">
-                                <caption style="color:#00aced;">Product & Tracking Information</caption>
-                             <tr>
-                    <th>Postal Company:</th><th>Features:</th><th>  </th>
-                             <tr>
-                                 <td>Front-Point Security Company</td>
-                                 <td>Insured</td>
-                                 <td>PO to Addressee</td>
-                             </tr>
-                             <tr>
-                             <td>       </td>
-                             <td>Up to 99.9% insurance included</td>
-                             <td>                       </td>
-                            </tr>
-                            </table>  -->
-                <div class="table-responsive">
-                    <table class="table table-striped delivery-status">
-                        <tr>
-                            <th style="color:#fca901;">DATE & TIME</th>
-                            <th style="color:#fca901;">STATUS OF ITEM</th>
-                            <th style="color:#fca901;">LOCATION</th>
-                        </tr>
-
-                    </table>
-                </div>
+                
+                
             </div>
 
             <!-- right sidebar tracking details and feedback ends-->

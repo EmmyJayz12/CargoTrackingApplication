@@ -12,6 +12,10 @@
 <div class="ed_transprentbg ed_toppadder90 ed_bottompadder90" style="back">
     <div class="container content">
         <div class="row">
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-success">@ViewBag.Message</div>
+            }
             <!-- left side bar for quick links -->
             <div class="col-lg-3 col-md-3 col-sm-3 adminsidebar">
                 <h3 style="font-weight: bolder;COLOR:#FFF;">QUICK LINKS</h3>
@@ -29,48 +33,49 @@
                 <form class="panel panel-group createtrackid" action="" method="post">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="First Name of Shipper" name="shipper_fname" required />
+                            <input class="form-control" type="text" placeholder="First Name of Shipper" name="ShippersFirstName" required />
                         </div>
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Last Name of Shipper" name="shipper_lname" class="text-field input-style" required />
+                            <input class="form-control" type="text" placeholder="Last Name of Shipper" name="ShippersLastName" class="text-field input-style" required />
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Phone Number of Shipper" name="shipper_phone" class="text-field input-style" required />
+                            <input class="form-control" type="text" placeholder="Phone Number of Shipper" name="ShippersPhone" class="text-field input-style" required />
                         </div>
                         <div class="col-md-6">
-                            <input class="form-control" type="text" placeholder="Country Name of Shipper" name="shipper_country" class="text-field input-style" required />
+                            <input class="form-control" type="text" placeholder="Country Name of Shipper" name="ShippersCountryName" class="text-field input-style" required />
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Receiver's First Name" name="receiver_fname" required />
+                            <input class="form-control" type="text" placeholder="Receiver's First Name" name="ReceiversFirstName" required />
                         </div>
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Receiver's Last Name" name="receiver_lname" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Receiver's Phone Number" name="receiver_phone" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Receiver's Email" name="receiver_email" required />
+                            <input class="form-control" type="text" placeholder="Receiver's Last Name" name="ReceiversLastName" required />
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Receiver's Country Name" name="receiver_country" required />
+                            <input class="form-control" type="text" placeholder="Receiver's Phone Number" name="ReceiversPhone" required />
                         </div>
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Tracking Number (E.g 625255283)" name="tracking_no" required />
+                            <input class="form-control" type="text" placeholder="Receiver's Email" name="ReceiversEmail" required />
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Description (E,g Box)" name="description" required />
+                            <input class="form-control" type="text" placeholder="Receiver's Country Name" name="ReceiversCountryName" required />
+                        </div>
+                        <div class="form-group col-md-6">                           
+                            <input type="text" name="TrackingId" placeholder="Tracking No" id="trackingId" style="width:80%;" readonly>    
+                            <a href="#" id="genTrackingId" style="width:20%; color:#fca901; text-decoration:none">Generate</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <input class="form-control" type="text" placeholder="Description (E,g Box)" name="Description" required />
                         </div>
                         <div class="form-group col-md-6">
                             <input class="form-control" type="text" placeholder="Weight (E.g 5kg)" name="weight" required />
@@ -78,18 +83,18 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Invoice Number" name="invoice_no" required />
+                            <input class="form-control" type="text" placeholder="Invoice Number" name="Invoice" required />
                         </div>
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Booking Mode (E.g Paid)" name="booking_mode" required />
+                            <input class="form-control" type="text" placeholder="Booking Mode (E.g Paid)" name="BookingMode" required />
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Total Freight (E.g $950)" name="total_freight" required />
+                            <input class="form-control" type="text" placeholder="Total Freight (E.g $950)" name="TotalFreight" required />
                         </div>
                         <div class="form-group col-md-6">
-                            <select class="form-control" name="delivery_mode">
+                            <select class="form-control" name="DeliveryMode">
                                 <option value="">Delivery Mode</option>
                                 <option value="Air">Air</option>
                                 <option value="Road">Road</option>
@@ -99,23 +104,23 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Pick Up Date (E.g 11/08/2018)" name="pickup_date" required />
+                            <input class="form-control" type="text" placeholder="Pick Up Date (E.g 11/08/2018)" name="PickUpDate" required />
                         </div>
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Pickup Time (E.g 8:30PM GMT)" name="pickup_time" required />
+                            <input class="form-control" type="text" placeholder="Pickup Time (E.g 8:30PM GMT)" name="PickTime" required />
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Status (E.g In Transit)" name="delivery_status" required />
+                            <input class="form-control" type="text" placeholder="Status (E.g In Transit)" name="Status" required />
                         </div>
                         <div class="form-group col-md-6">
-                            <input class="form-control" type="text" placeholder="Comment (E.g In Progress)" name="comment" required />
+                            <input class="form-control" type="text" placeholder="Comment (E.g In Progress)" name="Comment" required />
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <textarea class="form-control" rows="3" type="text" placeholder="Receiver's Address" name="receiver_address" required></textarea>
+                            <textarea class="form-control" rows="3" type="text" placeholder="Receiver's Address" name="ReceiversAddress" required></textarea>
                         </div>
                     </div>
                     <div class="row">

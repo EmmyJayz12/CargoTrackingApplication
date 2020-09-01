@@ -1,154 +1,164 @@
 ﻿
-@{
-    ViewBag.Title = "clientupdate";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
+    @using CargoTrackingApplication.Models
+    @{
+        ViewBag.Title = "clientupdate";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
 
-@Html.Partial("_AdminHeader")
 
-<!--main content begins -->
-<div class="ed_transprentbg ed_toppadder90 ed_bottompadder90" style="back">
-    <div class="container content">
-        <div class="row">
-            <!-- left side bar for quick links -->
-            <div class="col-lg-3 col-md-3 col-sm-3 adminsidebar">
-                <h3 style="font-weight: bolder;COLOR:#FFF;">QUICK LINKS</h3>
 
-                @Html.Partial("_HeaderLink")
+    @Html.Partial("_AdminHeader")
+
+    <!--main content begins -->
+    <div class="ed_transprentbg ed_toppadder90 ed_bottompadder90" style="back">
+        <div class="container content">
+            <div class="row">
+                <!-- left side bar for quick links -->
+                <div class="col-lg-3 col-md-3 col-sm-3 adminsidebar">
+                    <h3 style="font-weight: bolder;COLOR:#FFF;">QUICK LINKS</h3>
+
+                    @Html.Partial("_HeaderLink")
+
+                </div>
+                <!-- left side bar for quick links ends -->
+                <!-- right side bar for tracking details and feedback -->
+                <div class="col-lg-9 col-md-9 col-sm-9 admincreateidbar">
+                    <hgroup>
+                        <h4 style="font-weight: bolder;"><i class="fa fa-edit"></i> Edit Record</h4>
+                    </hgroup>
+                    <div class="error_detect"></div>
+                   @{
+                       var data = Session["client"] as ClientRegistration;
+                }
+                    
+                        <form class="panel panel-group createtrackid" action="" method="post">
+                            <input type="hidden" value=@data.UserId name="UserId" /> 
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>First Name of Shipper: </label><br />
+                                    <input class="form-control" type="text" value=@data.ShippersFirstName name="ShippersFirstName" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Last Name of Shipper:</label><br />
+                                    <input class="form-control" type="text" value=@data.ShippersLastName name="ShippersLastName" class="text-field input-style" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Phone Number of Shipper:</label><br />
+                                    <input class="form-control" type="text" value=@data.ShippersPhone name="ShippersPhone" class="text-field input-style" required />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Country of Shipper:</label><br />
+                                    <input class="form-control" type="text" value=@data.ShippersCountryName name="ShippersCountryName" class="text-field input-style" required />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Receiver's First Name:</label><br />
+                                    <input class="form-control" type="text" value=@data.ReceiversFirstName name="ReceiversFirstName" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Receiver's Last Name:</label><br />
+                                    <input class="form-control" type="text" value=@data.ReceiversLastName name="ReceiversLastName" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Receiver's Phone Number:</label><br />
+                                    <input class="form-control" type="text" value=@data.ReceiversPhone name="ReceiversPhone" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Receiver's Email:</label><br />
+                                    <input class="form-control" type="text" value=@data.ReceiversEmail name="ReceiversEmail" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Receiver's Country:</label><br />
+                                    <input class="form-control" type="text" value=@data.ReceiversCountryName name="ReceiversCountryName" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Tracking No:</label><br />
+                                    <input class="form-control" type="text" value=@data.TrackingId name="TrackingId" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Description:</label><br />
+                                    <input class="form-control" type="text" value=@data.Description name="Description" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Weight:</label><br />
+                                    <input class="form-control" type="text" value=@data.weight name="weight" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Invoice No:</label><br />
+                                    <input class="form-control" type="text" value=@data.Invoice name="Invoice" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Booking Mode:</label><br />
+                                    <input class="form-control" type="text" value=@data.BookingMode name="BookingMode" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Total Freight:</label><br />
+                                    <input class="form-control" type="text" value=@data.TotalFreight name="TotalFreight" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Delivery Mode:</label><br />
+                                    <select class="form-control" name="DeliveryMode">
+                                        <option value="Air">Air</option>
+                                        <option value="Road">Road</option>
+                                        <option value="Sea">Sea</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Pickup Date:</label><br />
+                                    <input class="form-control" type="text" value=@data.PickupDate name="PickupDate" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Pickup time:</label><br />
+                                    <input class="form-control" type="text" value=@data.PickTime name="PickTime" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Status:</label><br />
+                                    <input class="form-control" type="text" value=@data.Status name="Status" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Comment:</label><br />
+                                    <input class="form-control" type="text" value=@data.Comment name="comment" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label>Receiver's Address:</label><br />
+                                    <textarea class="form-control" type="text" rows="3" name="ReceiversAddress" value=@data.ReceiversAddress required></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary" id="quote-btn" name="updateCredentials" type="submit" class="theme-btn"><i class="fa fa-paper-plane"></i>Update</button>
+                                    <button class="btn btn-default" id="quote-btn" name="updateCredentials" type="submit" class="theme-btn"></i>Back</button>
+                                </div>
+                            </div>
+                        </form>
+                    
+                    </div>
+                </div>
+
+
 
             </div>
-            <!-- left side bar for quick links ends -->
-            <!-- right side bar for tracking details and feedback -->
-            <div class="col-lg-9 col-md-9 col-sm-9 admincreateidbar">
-                <hgroup>
-                    <h4 style="font-weight: bolder;"><i class="fa fa-edit"></i> Edit Record</h4>
-                </hgroup>
-                <div class="error_detect"></div>
-                <form class="panel panel-group createtrackid" action="" method="post">
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>First Name of Shipper:</label><br />
-                            <input class="form-control" type="text" value="" name="shipper_fname" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Last Name of Shipper:</label><br />
-                            <input class="form-control" type="text" value="" name="shipper_lname" class="text-field input-style" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Phone Number of Shipper:</label><br />
-                            <input class="form-control" type="text" value="" name="shipper_phone" class="text-field input-style" required />
-                        </div>
-                        <div class="col-md-6">
-                            <label>Country of Shipper:</label><br />
-                            <input class="form-control" type="text" value="" name="shipper_country" class="text-field input-style" required />
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Receiver's First Name:</label><br />
-                            <input class="form-control" type="text" value="" name="receiver_fname" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Receiver's Last Name:</label><br />
-                            <input class="form-control" type="text" value="" name="receiver_lname" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Receiver's Phone Number:</label><br />
-                            <input class="form-control" type="text" value="" name="receiver_phone" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Receiver's Email:</label><br />
-                            <input class="form-control" type="text" value="" name="receiver_email" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Receiver's Country:</label><br />
-                            <input class="form-control" type="text" value="" name="receiver_country" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Tracking No:</label><br />
-                            <input class="form-control" type="text" value="" name="tracking_no" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Description:</label><br />
-                            <input class="form-control" type="text" value="" name="description" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Weight:</label><br />
-                            <input class="form-control" type="text" value="" name="weight" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Invoice No:</label><br />
-                            <input class="form-control" type="text" value="" name="invoice_no" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Booking Mode:</label><br />
-                            <input class="form-control" type="text" value="" name="booking_mode" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Total Freight:</label><br />
-                            <input class="form-control" type="text" value="" name="total_freight" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Delivery Mode:</label><br />
-                            <select class="form-control" name="delivery_mode">
-                                <option value="Air">Air</option>
-                                <option value="Road">Road</option>
-                                <option value="Sea">Sea</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Pickup Date:</label><br />
-                            <input class="form-control" type="text" value="" name="pickup_date" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Pickup time:</label><br />
-                            <input class="form-control" type="text" value="" name="pickup_time" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Status:</label><br />
-                            <input class="form-control" type="text" value="" name="status" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Comment:</label><br />
-                            <input class="form-control" type="text" value="" name="comment" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label>Receiver's Address:</label><br />
-                            <textarea class="form-control" type="text" rows="3" name="receiver_address" required></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn btn-primary" id="quote-btn" name="updateCredentials" type="submit" class="theme-btn"><i class="fa fa-paper-plane"></i>Update</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-
-    </div>
 
     <!-- right sidebar tracking details and feedback ends-->
-</div>
+        </div>
 

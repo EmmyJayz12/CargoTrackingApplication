@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "AdminRegistration";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="ed_transprentbg ed_toppadder90 ed_bottompadder90" style="back">
+    <div class="container content">
+        <div class="row">
+            <!-- left side bar for quick links -->
+            <div class="col-lg-3 col-md-3 col-sm-3 adminsidebar">
+                <h3 style="font-weight: bolder;COLOR:#FFF;">QUICK LINKS</h3>
+
+                @Html.Partial("_HeaderLink")
+
+            </div>
+            <!-- left side bar for quick links ends -->
+            <!-- right side bar for tracking details and feedback -->
+            <div class="col-lg-9 col-md-9 col-sm-9 admincreateidbar">
+                <hgroup>
+                    <h4 style="font-weight: bolder;"><i class="fa fa-edit"></i>Create Admin</h4>
+                </hgroup>
+                <div class="error_detect"></div>
+                <form class="panel panel-group createtrackid" action="" method="post">
+                    @if(ViewBag.Message != null)
+                    {
+                        <div class="alert alert-success">@ViewBag.Message</div>
+                    }
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>First Name:</label><br />
+                            <input class="form-control" type="text" value="" name="FirstName" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Last Name:</label><br />
+                            <input class="form-control" type="text" value="" name="LastName" class="text-field input-style" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>State of Origin:</label><br />
+                            <input class="form-control" type="text" value="" name="State" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Home Address:</label><br />
+                            <input class="form-control" type="text" value="" name="Address" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Phone Number:</label><br />
+                            <input class="form-control" type="text" value="" name="Phone" class="text-field input-style" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Email:</label><br />
+                            <input class="form-control" type="text" value="" name="Email" class="text-field input-style" required />
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Username:</label><br />
+                            <input class="form-control" type="text" value="" name="Username" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Password:</label><br />
+                            <input class="form-control" type="password" value="" name="Password" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Confirm Password:</label><br />
+                            <input class="form-control" type="password" value="" name="ConfirmPassword" required />
+                        </div>
+                    </div>
+                   
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" id="quote-btn" name="updateCredentials" type="submit" class="theme-btn"><i class="fa fa-paper-plane"></i>Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!-- right sidebar tracking details and feedback ends-->
+</div>
+

@@ -1,4 +1,4 @@
-﻿
+﻿@using CargoTrackingApplication.Models
 @{
     ViewBag.Title = "inbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -35,7 +35,16 @@
                             <th>DATE SENT</th>
                             <th>   </th>
                         </tr>
+@foreach (var item in Model)
+{
+                        <tr>
 
+                            <td>@item.Email</td>
+                            <td>@item.Subject</td>
+                            <td>@item.Message</td>
+                            <td>@item.CreatedOn</td>
+                        </tr>
+}
                     </table>
                 </div>
 
