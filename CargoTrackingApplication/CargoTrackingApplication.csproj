@@ -249,6 +249,7 @@
     <Content Include="Content\cgi-bin\manageacct.html" />
     <Content Include="Content\cgi-bin\manageusers.html" />
     <Content Include="Content\cgi-bin\report.html" />
+    <Content Include="Content\Database\Database_ Script.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
